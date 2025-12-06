@@ -7,7 +7,11 @@ load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 def main():
-    print("Hello from ai-agents!")
+    user_input = input("What is the post you are interested to create?")   
+    post_content = create_post(user_input)
+    print("Post generated successfully")
+    print(f"Post content: {post_content}")
+    print("Hello from ai-agents! Your post is ready to be published.")
 
 def create_post(topic:str) -> str:
     # call the AI/LLM to generate the post content
@@ -38,7 +42,4 @@ def create_post(topic:str) -> str:
     return response.json()["output"]
 
 if __name__ == "__main__":
-    user_input = input("What is the post you are interested to create?")   
-    post_content = create_post(user_input)
-    print("Post generated successfully")
-    print(f"Post content: {post_content}")
+    main()
